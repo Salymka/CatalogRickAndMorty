@@ -1,0 +1,58 @@
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  height: 340px;
+  background: #FFFFFF;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  &+ .card {
+    margin-left: 20px;
+  }
+}
+
+.card_name {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.87);
+  mix-blend-mode: normal;
+  margin: 10px 16px 0 16px;
+
+}
+.card_species {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.25px;
+  color: rgba(0, 0, 0, 0.6);
+  mix-blend-mode: normal;
+  margin: 0 16px 10px 16px;
+
+}
+.card_img {
+  width: 240px;
+  height: 240px;
+  border-radius: 8px 8px 0 0;
+}
+
+@media (max-width: 622px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    height: 340px;
+    background: #FFFFFF;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+}

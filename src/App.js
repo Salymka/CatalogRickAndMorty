@@ -1,8 +1,10 @@
 import React from "react";
+import Home from "./pages/HomePage/Home";
+import styles from './App.scss'
 const App = () =>{
     return (
-        <div >
-            Hello World
+        <div className={styles["*"]}>
+            <Home/>
         </div>
     )
 }
