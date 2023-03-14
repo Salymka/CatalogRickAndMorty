@@ -4,8 +4,6 @@ const getCharacters = async () => {
         charactersIds.push(i)
     }
     const response = await fetch(`https://rickandmortyapi.com/api/character/${charactersIds}`)
-    const data = await response.json()
-    console.log(data)
-    return data
+    return await response.json()
 }
 export default getCharacters;

@@ -8,18 +8,10 @@ import {logPlugin} from "@babel/preset-env/lib/debug";
 
 const ON_PAGE = 8
 
-const Home = (factory, deps) => {
+const Home = () => {
     const [characters, setCharacters] = useState([])
     const [page, setPage] = useState(1)
     const [filter, setFilter] = useState('')
-
-    function lastPage() {
-        setPage(page => page - 1)
-    }
-
-    function nextPage() {
-        setPage(page => page + 1)
-    }
 
     function sortCharactersForName(list) {
         return [...list.sort((a, b) => a.name.localeCompare(b.name))]
@@ -30,10 +22,6 @@ const Home = (factory, deps) => {
             .then(characters => setCharacters(characters))
             .catch(e => console.log(e))
     }, [])
-
-    useEffect(() => {
-        console.log(filteredCharacters)
-    }, [filter])
 
     const filteredCharacters = useMemo(() => {
         const filteredList = characters.filter(character => character.name.toLowerCase().includes(filter.toLowerCase()))
@@ -60,26 +48,23 @@ const Home = (factory, deps) => {
                     />
 
                     <div className={styles.pagination}>
-                        {page > 1
-                            ?
-                            <button className={styles.button} onClick={lastPage}>
-                                Last Page
-                            </button>
-                            :
-                            <button className={styles.button} disabled>
-                                Last Page
-                            </button>
-                        }
-                        {page < Math.ceil(filteredCharacters.length / 8)
-                            ?
-                            <button className={styles.button} onClick={nextPage}>
-                                Next Page
-                            </button>
-                            :
-                            <button className={styles.button} disabled>
-                                Next Page
-                            </button>
-                        }
+
+                        <button
+                            onClick={() => setPage(page => page - 1)}
+                            className={styles.button}
+                            disabled={page <= 1}
+                        >
+                            Last Page
+                        </button>
+
+                        <button
+                            onClick={() => setPage(page => page + 1)}
+                            className={styles.button}
+                            disabled={page >= Math.ceil(filteredCharacters.length / 8)}
+                        >
+                            Next Page
+                        </button>
+
 
                     </div>
                 </div>
