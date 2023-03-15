@@ -1,0 +1,33 @@
+.option {
+  display: flex;
+  flex-direction: column;
+  width: 413px;
+  padding: 10px 0;
+  border-bottom: 2px solid rgba(110, 121, 140, 0.5);
+
+}
+
+.option_name {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #081F32;
+}
+.option_value {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: #6E798C;
+}
+
+@media (max-width: 520px) {
+  .option {
+    width: 320px;
+  }
+}

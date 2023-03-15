@@ -1,0 +1,31 @@
+.body {
+  display: flex;
+  padding: 0 14px;
+  justify-content: center;
+  margin-top: 24px;
+}
+.cardWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media (max-width: 1067px) {
+  .cardWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 825px) {
+  .cardWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 565px) {
+  .cardWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
