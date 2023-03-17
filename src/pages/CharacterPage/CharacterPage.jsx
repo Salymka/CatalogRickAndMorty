@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Link, useLocation, useParams} from "react-router-dom";
+import {useParams,useNavigate} from "react-router-dom";
 import {getCharacterById} from "../../api/api";
 import styles from './CharacterPage.module.scss'
 import goBack from '../../ctatic/arrowLeft.png'
@@ -9,6 +9,7 @@ import Spinner from "../../components/Spinner/Spinner";
 const CharacterPage = () => {
     const {id} = useParams()
     const [character, setCharacter] = useState(null)
+    const navigate = useNavigate();
 
     useEffect(() => {
         getCharacterById(id)
@@ -18,7 +19,7 @@ const CharacterPage = () => {
     return (
         <div className={styles.body}>
             {/* eslint-disable-next-line no-restricted-globals */}
-                <div className={styles.goBack} onClick={() => history.back()}>
+                <div className={styles.goBack} onClick={() => navigate(-1)}>
                     <img src={goBack} alt={'go back'} className={styles.goBack_arrow}/>
                     <label className={styles.goBack_label}>
                         GO BACK
@@ -27,7 +28,7 @@ const CharacterPage = () => {
             {character
                 ?
                 <div className={styles.profile}>
-                    <img src={character.image} className={styles.avatar}/>
+                    <img src={character.image} className={styles.avatar} alt={"user icon"}/>
                     <label className={styles.name}>
                         {character.name}
                     </label>

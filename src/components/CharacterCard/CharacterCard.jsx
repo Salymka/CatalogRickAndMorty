@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './CharacterCard.module.scss'
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const CharacterCard = ({card, filters}) => {
     return (
-        <NavLink to={`character/${card.id}`} className={styles.card__link}>
+        <Link to={`character/${card.id}`} className={styles.card__link}>
             <div
                 key={card.id}
                 className={styles.card}
@@ -20,7 +20,7 @@ const CharacterCard = ({card, filters}) => {
                     {card.species}
                 </label>
             </div>
-        </NavLink>
+        </Link>
 
 
     );

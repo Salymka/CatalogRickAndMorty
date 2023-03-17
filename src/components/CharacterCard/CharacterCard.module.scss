@@ -1,6 +1,8 @@
 
 .card__link {
   text-decoration: none;
+  margin: 0 10px 20px 10px;
+
 }
 
 .card {
@@ -11,7 +13,6 @@
   background: #FFFFFF;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  margin: 0 10px 20px 10px;
   cursor: pointer;
 
 }

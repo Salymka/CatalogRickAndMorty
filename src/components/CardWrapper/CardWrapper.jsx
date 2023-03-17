@@ -1,9 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React from 'react';
 import styles from "./CardWrapper.module.scss";
 import CharacterCard from "../CharacterCard/CharacterCard";
 
 const CardWrapper = ({characters}) => {
-    const ref = useRef(null);
 
 
     return (
