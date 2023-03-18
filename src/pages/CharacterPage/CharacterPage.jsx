@@ -35,11 +35,11 @@ const CharacterPage = () => {
                     <label className={styles.info}>
                         Informations
                     </label>
-                    <InfoOption optionName={"Gender"} optionValue={character.gender}/>
-                    <InfoOption optionName={"Status"} optionValue={character.status}/>
-                    <InfoOption optionName={"Specie"} optionValue={character.specie ? character.specie : "unknown"}/>
-                    <InfoOption optionName={"Origin"} optionValue={character.origin.name}/>
-                    <InfoOption optionName={"Type"} optionValue={character.type ? character.type : "unknown"}/>
+                    <InfoOption optionName={"Gender"} optionValue={character.gender ?? "unknown"}/>
+                    <InfoOption optionName={"Status"} optionValue={character.status ?? "unknown"}/>
+                    <InfoOption optionName={"Specie"} optionValue={character.specie ?? "unknown"}/>
+                    <InfoOption optionName={"Origin"} optionValue={character.origin.name ?? "unknown"}/>
+                    <InfoOption optionName={"Type"} optionValue={character.type ?? "unknown"}/>
                     <div style={{marginBottom: 50}}></div>
                 </div>
                 :

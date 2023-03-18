@@ -1,19 +1,21 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {Suspense, useCallback, useContext, useEffect, useRef, useState} from 'react';
 import Header from "../../components/Header/Header";
-import FilterInput from "../../components/FilterInput/FilterInput";
 import {getCharacters} from '../../api/api.js'
 import CardWrapper from "../../components/CardWrapper/CardWrapper";
 import styles from './Home.module.scss'
 import Spinner from "../../components/Spinner/Spinner";
 import {useSearchParams} from "react-router-dom";
 
+const FilterInput = React.lazy(() => import("../../components/FilterInput/FilterInput"))
 
 const Home = () => {
     const [characters, setCharacters] = useState([])
     const [searchParams, setSearchParams] = useSearchParams();
     const [isLoading, setIsLoading] = useState(false);
     const countPagesRef = useRef(1);
-    function queryConstructor(page, filter){
+    const timerRef = useRef()
+
+    function queryConstructor(page, filter) {
         let searchQuery = ``
 
         if (page) {
@@ -27,8 +29,8 @@ const Home = () => {
         }
         return searchQuery;
     }
+
     function changeURL(newFilter, newPage) {
-        // console.log(firstUpdateRef.current)
         if (newFilter) {
             newPage = 1;
         }
@@ -43,39 +45,51 @@ const Home = () => {
         setIsLoading(true)
         getCharacters(searchQuery)
             .then(characters => {
-                setCharacters(() => characters?.results ?? characters)
+                setCharacters(() => characters.results)
                 countPagesRef.current = +characters.info?.pages ?? 1
             })
             .catch(e => console.log(e + "error"))
             .finally(() => setIsLoading(false))
     }
 
-    useEffect(() => {
-        getCharactersList(searchParams.get('page'), searchParams.get('filter'))
-    }, [searchParams])
+    const debounce = useCallback((fun, props) => {
+        if (timerRef.current) {
+            clearTimeout(timerRef.current)
+        }
+        timerRef.current = setTimeout(() => {
+            fun(...props)
+        }, 500)
+    }, [getCharactersList])
 
     useEffect(() => {
         if (!searchParams.get('page')) {
             changeURL(null, 1)
         }
-    }, [])
+
+        debounce(getCharactersList, [searchParams.get('page'), searchParams.get('filter')])
+    }, [searchParams])
+
 
     return (
         <div>
             <div>
                 <Header/>
-                <FilterInput
-                    disable={isLoading}
-                    onChange={changeURL}
-                    value={searchParams.get('filter')}
-                />
-                {!isLoading
-                    ?
-                    <CardWrapper
-                        filter={searchParams.get('filter')}
-                        page={searchParams.get('page')}
-                        characters={characters}
+                    <FilterInput
+                        disable={isLoading}
+                        onChange={changeURL}
+                        value={searchParams.get('filter')}
                     />
+                {!isLoading
+                    ? characters.length
+                        ?
+                        <CardWrapper
+                            filter={searchParams.get('filter')}
+                            page={searchParams.get('page')}
+                            characters={characters}
+                        />
+                        : <h2
+                            style={{margin: '50px', textAlign: "center"}}
+                        >No Results</h2>
                     :
                     <Spinner/>
                 }
@@ -99,8 +113,6 @@ const Home = () => {
                     </button>
                 </div>
             </div>
-
-
         </div>
     );
 };
