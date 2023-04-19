@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/CatalogRickAndMorty/static/css/main.d5acc8f6.css",
+    "main.js": "/CatalogRickAndMorty/static/js/main.b95a4ede.js",
+    "static/css/37.5c940e26.chunk.css": "/CatalogRickAndMorty/static/css/37.5c940e26.chunk.css",
+    "static/js/37.53ac5bde.chunk.js": "/CatalogRickAndMorty/static/js/37.53ac5bde.chunk.js",
+    "static/media/logo.png": "/CatalogRickAndMorty/static/media/logo.ecfe8468ddab14f98e1e.png",
+    "index.html": "/CatalogRickAndMorty/index.html",
+    "main.d5acc8f6.css.map": "/CatalogRickAndMorty/static/css/main.d5acc8f6.css.map",
+    "main.b95a4ede.js.map": "/CatalogRickAndMorty/static/js/main.b95a4ede.js.map",
+    "37.5c940e26.chunk.css.map": "/CatalogRickAndMorty/static/css/37.5c940e26.chunk.css.map",
+    "37.53ac5bde.chunk.js.map": "/CatalogRickAndMorty/static/js/37.53ac5bde.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d5acc8f6.css",
+    "static/js/main.b95a4ede.js"
+  ]
+}
